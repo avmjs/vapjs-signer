@@ -1,8 +1,8 @@
 var webpack = require('webpack'); // eslint-disable-line
 
 var env = process.env.NODE_ENV;   // eslint-disable-line
-var filename = 'ethjs-signer';      // eslint-disable-line
-var library = 'ethSigner';          // eslint-disable-line
+var filename = 'vapjs-signer';      // eslint-disable-line
+var library = 'vapSigner';          // eslint-disable-line
 var config = {                    // eslint-disable-line
   entry: [
     './lib/index.js',

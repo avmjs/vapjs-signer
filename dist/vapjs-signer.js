@@ -4,11 +4,11 @@
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("ethSigner", [], factory);
+		define("vapSigner", [], factory);
 	else if(typeof exports === 'object')
-		exports["ethSigner"] = factory();
+		exports["vapSigner"] = factory();
 	else
-		root["ethSigner"] = factory();
+		root["vapSigner"] = factory();
 })(this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -5704,13 +5704,13 @@ function recover(rawTx, v, r, s) {
 
 function sign(transaction, privateKey, toObject) {
   if (typeof transaction !== 'object' || transaction === null) {
-    throw new Error('[ethjs-signer] transaction input must be a type \'object\', got \'' + typeof transaction + '\'');
+    throw new Error('[vapjs-signer] transaction input must be a type \'object\', got \'' + typeof transaction + '\'');
   }
   if (typeof privateKey !== 'string') {
-    throw new Error('[ethjs-signer] private key input must be a string');
+    throw new Error('[vapjs-signer] private key input must be a string');
   }
   if (!privateKey.match(/^(0x)[0-9a-fA-F]{64}$/)) {
-    throw new Error('[ethjs-signer] invalid private key value, private key must be a prefixed hexified 32 byte string (i.e. "0x..." 64 chars long).');
+    throw new Error('[vapjs-signer] invalid private key value, private key must be a prefixed hexified 32 byte string (i.e. "0x..." 64 chars long).');
   }
 
   var raw = [];
@@ -5731,14 +5731,14 @@ function sign(transaction, privateKey, toObject) {
 
     // Fixed-width field
     if (fieldInfo.length && value.length !== fieldInfo.length && value.length > 0) {
-      throw new Error('[ethjs-signer] while signing raw transaction, invalid \'' + fieldInfo.name + '\', invalid length should be \'' + fieldInfo.length + '\' got \'' + value.length + '\'');
+      throw new Error('[vapjs-signer] while signing raw transaction, invalid \'' + fieldInfo.name + '\', invalid length should be \'' + fieldInfo.length + '\' got \'' + value.length + '\'');
     }
 
     // Variable-width (with a maximum)
     if (fieldInfo.maxLength) {
       value = stripZeros(value);
       if (value.length > fieldInfo.maxLength) {
-        throw new Error('[ethjs-signer] while signing raw transaction, invalid \'' + fieldInfo.name + '\' length, the max length is \'' + fieldInfo.maxLength + '\', got \'' + value.length + '\'');
+        throw new Error('[vapjs-signer] while signing raw transaction, invalid \'' + fieldInfo.name + '\' length, the max length is \'' + fieldInfo.maxLength + '\', got \'' + value.length + '\'');
       }
     }
 
@@ -12225,7 +12225,7 @@ module.exports = {
 				"spec": "6.3.2",
 				"type": "version"
 			},
-			"/home/nick/github/ethjs-signer"
+			"/home/nick/github/vapjs-signer"
 		]
 	],
 	"_from": "elliptic@6.3.2",
@@ -12257,14 +12257,14 @@ module.exports = {
 		"/",
 		"/browserify-sign",
 		"/create-ecdh",
-		"/ethjs-account",
+		"/vapjs-account",
 		"/secp256k1"
 	],
 	"_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.3.2.tgz",
 	"_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
 	"_shrinkwrap": null,
 	"_spec": "elliptic@6.3.2",
-	"_where": "/home/nick/github/ethjs-signer",
+	"_where": "/home/nick/github/vapjs-signer",
 	"author": {
 		"name": "Fedor Indutny",
 		"email": "fedor@indutny.com"
@@ -12390,7 +12390,7 @@ module.exports = function numberToBN(arg) {
 
 /* WEBPACK VAR INJECTION */(function(Buffer) {const assert = __webpack_require__(11)
 /**
- * RLP Encoding based on: https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP
+ * RLP Encoding based on: https://github.com/vaporyco/wiki/wiki/%5BEnglish%5D-RLP
  * This function takes in a data, convert it to buffer if not, and a length for recursion
  *
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
@@ -12434,7 +12434,7 @@ function encodeLength (len, offset) {
 }
 
 /**
- * RLP Decoding based on: {@link https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP|RLP}
+ * RLP Decoding based on: {@link https://github.com/vaporyco/wiki/wiki/%5BEnglish%5D-RLP|RLP}
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
  * @returns {Array} - returns decode Array of Buffers containg the original message
  **/
@@ -13296,4 +13296,4 @@ module.exports = __webpack_require__(10);
 /******/ ])
 });
 ;
-//# sourceMappingURL=ethjs-signer.js.map
+//# sourceMappingURL=vapjs-signer.js.map

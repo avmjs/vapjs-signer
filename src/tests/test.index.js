@@ -1,10 +1,10 @@
 const sign = require('../index.js').sign; // eslint-disable-line
 const recover = require('../index.js').recover;
-const TestRPC = require('ethereumjs-testrpc'); // eslint-disable-line
-const Eth = require('ethjs-query'); // eslint-disable-line
-const EthTx = require('ethereumjs-tx'); // eslint-disable-line
-const generate = require('ethjs-account').generate; // eslint-disable-line
-const publicToAddress = require('ethjs-account').publicToAddress; // eslint-disable-line
+const TestRPC = require('vaporyjs-testrpc'); // eslint-disable-line
+const Vap = require('vapjs-query'); // eslint-disable-line
+const VapTx = require('vaporyjs-tx'); // eslint-disable-line
+const generate = require('vapjs-account').generate; // eslint-disable-line
+const publicToAddress = require('vapjs-account').publicToAddress; // eslint-disable-line
 const assert = require('chai').assert;
 const stripHexPrefix = require('strip-hex-prefix');
 const BN = require('bn.js');
@@ -103,19 +103,19 @@ describe('sign', () => {
           balance: 999999999,
         }],
       });
-      const eth = new Eth(provider);
+      const vap = new Vap(provider);
       const rawTx = {
         to: '0x6023E44829921590b24f458c9eE4F544507d59B6',
         gas: 300000,
         value: new BN(450000),
       };
       const signedTx = sign(rawTx, testAccount.privateKey);
-      eth.sendRawTransaction(signedTx, (err, txHash) => {
+      vap.sendRawTransaction(signedTx, (err, txHash) => {
         assert.equal(err, null);
         assert.equal(typeof txHash, 'string');
 
         setTimeout(() => {
-          eth.getTransactionByHash(txHash, (rErr, transaction) => {
+          vap.getTransactionByHash(txHash, (rErr, transaction) => {
             assert.equal(rErr, null);
 
             assert.equal(testAccount.address.toLowerCase(), transaction.from);
@@ -130,7 +130,7 @@ describe('sign', () => {
     });
   });
 
-  describe('should work the same as ethereumjs-tx', () => {
+  describe('should work the same as vaporyjs-tx', () => {
     it('should pass a thousand random signing tests', () => {
       for (var i = 0; i < 1000; i++) { // eslint-disable-line
         const testAccount = generate('sdkjfhskjhskhjsfkjhsf093j9sdjfpisjdfoisjdfisdfsfkjhsfkjhskjfhkshdf');
@@ -142,13 +142,13 @@ describe('sign', () => {
           value: `0x${new BN(0).toString(16)}`,
           data: '0x',
         };
-        const tx = new EthTx(rawTx);
+        const tx = new VapTx(rawTx);
         tx.sign(new Buffer(testAccount.privateKey.slice(2), 'hex'));
 
-        const ethjsSigner = sign(rawTx, testAccount.privateKey);
-        const ethereumjsTx = `0x${tx.serialize().toString('hex')}`;
+        const vapjsSigner = sign(rawTx, testAccount.privateKey);
+        const vaporyjsTx = `0x${tx.serialize().toString('hex')}`;
 
-        assert.equal(ethjsSigner, ethereumjsTx);
+        assert.equal(vapjsSigner, vaporyjsTx);
       }
     });
   });
