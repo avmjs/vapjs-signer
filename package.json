@@ -96,8 +96,8 @@
     }
   },
   "dependencies": {
-    "js-sha3": "0.5.5",
-    "rlp": "2.0.0",
+    "vapjs-sha3": "0.8.0",
+    "@vapoyjs/rlp": "2.0.0",
     "strip-hex-prefix": "1.0.0",
     "number-to-bn": "1.1.0",
     "elliptic": "6.3.2"
@@ -107,12 +107,12 @@
     "babel-core": "6.18.2",
     "babel-eslint": "7.1.0",
     "babel-loader": "6.2.8",
-    "vaporyjs-util": "5.0.1",
+    "vaporyjs-util": "5.1.5",
     "sandboxed-module": "2.0.3",
-    "vaporyjs-testrpc": "3.0.2",
-    "vaporyjs-tx": "1.1.4",
+    "vaporyjs-testrpc": "3.0.1",
+    "vaporyjs-tx": "1.1.0",
     "vapjs-query": "0.1.1",
-    "vapjs-account": "0.1.0",
+    "vapjs-account": "0.1.4",
     "babel-plugin-check-es2015-constants": "6.8.0",
     "babel-plugin-transform-es2015-arrow-functions": "6.8.0",
     "babel-plugin-transform-es2015-block-scoped-functions": "6.8.0",
@@ -143,7 +143,7 @@
 
     "chai": "3.5.0",
     "coveralls": "2.11.9",
-    "js-sha3": "0.5.5",
+    "vapjs-sha3": "0.8.0",
     "istanbul": "0.4.5",
     "eslint": "2.10.1",
     "eslint-config-airbnb": "9.0.1",

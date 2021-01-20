@@ -1,6 +1,6 @@
-const rlp = require('rlp');
+const rlp = require('@vaporyjs/rlp');
 const elliptic = require('elliptic');
-const keccak256 = require('js-sha3').keccak_256;
+const keccak256 = require('vapjs-sha3').keccak_256;
 const secp256k1 = new (elliptic.ec)('secp256k1'); // eslint-disable-line
 const stripHexPrefix = require('strip-hex-prefix');
 const numberToBN = require('number-to-bn');
