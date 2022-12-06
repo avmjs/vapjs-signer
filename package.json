@@ -176,7 +176,7 @@
     "rimraf": "2.3.4",
     "cross-env": "1.0.7",
     "chai": "3.5.0",
-    "coveralls": "2.11.9",
+    "coveralls": "2.13.3",
     "vapjs-sha3": "0.8.0",
     "istanbul": "0.4.5",
     "eslint": "2.10.1",
